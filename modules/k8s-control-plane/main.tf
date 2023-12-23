@@ -4,6 +4,12 @@ variable "cluster_name" {
   type        = string
 }
 
+variable "cluster_version" {
+  description = "Version of cluster"
+  type        = string
+  default = "1.26"
+}
+
 variable "key_name" {
   description = "SSH keypair name"
   type        = string
@@ -72,8 +78,9 @@ resource "aws_instance" "self" {
   instance_type               = "t3.medium"
   iam_instance_profile        = aws_iam_instance_profile.k8s-control-plane.id
   key_name                    = var.key_name
-  user_data = templatefile("${path.module}/user_data", {
+  user_data = templatefile("${path.module}/user_data.tmpl", {
     bucket_name = aws_s3_bucket.self.id
+    cluster_version = var.cluster_version
   })
   tags = {
     Name = "k8s-${var.cluster_name}-control-plane"
