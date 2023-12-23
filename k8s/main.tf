@@ -20,13 +20,13 @@ module "k8s-data-plane-2" {
 }
 
 output "control-plane-dns" {
-  module.k8s-control-plane.public-dns
+  value = module.k8s-control-plane.public-dns
 }
 
 output "data-plane-1-dns" {
-  module.k8s-data-plane-1.public-dns
+  value = module.k8s-data-plane-1.public-dns
 }
 
 output "data-plane-2-dns" {
-  module.k8s-data-plane-2.public-dns
+  value = module.k8s-data-plane-2.public-dns
 }
