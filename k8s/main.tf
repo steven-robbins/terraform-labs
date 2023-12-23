@@ -10,6 +10,7 @@ module "k8s-data-plane-1" {
   cluster_name = "lab1"
   key_name = "workstation"
   bucket_name = module.k8s-control-plane.bucket_name
+  node_id = "1"
 }
 
 module "k8s-data-plane-2" {
@@ -17,6 +18,7 @@ module "k8s-data-plane-2" {
   cluster_name = "lab1"
   key_name = "workstation"
   bucket_name = module.k8s-control-plane.bucket_name
+  node_id = "2"
 }
 
 output "control-plane-dns" {

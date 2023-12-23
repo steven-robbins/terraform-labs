@@ -14,6 +14,11 @@ variable "bucket_name" {
   type        = string
 }
 
+variable "node_id" {
+  description = "Identifier for data node"
+  type        = string
+}
+
 data "aws_iam_policy_document" "assume_role" {
   statement {
     effect = "Allow"
@@ -52,7 +57,7 @@ locals {
 }
 
 resource "aws_iam_role" "k8s-node" {
-  name               = "k8s-node"
+  name               = "k8s-node-${var.node_id}"
   path               = "/"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
