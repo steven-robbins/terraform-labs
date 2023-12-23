@@ -68,7 +68,7 @@ resource "aws_iam_role_policy_attachment" "k8s-node" {
 }
 
 resource "aws_iam_instance_profile" "k8s-node" {
-  name = "k8s-node"
+  name = "k8s-node-${var.node_id}"
   role = aws_iam_role.k8s-node.name
 }
 
