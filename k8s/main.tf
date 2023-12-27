@@ -32,3 +32,4 @@ output "data-plane-1-dns" {
 output "data-plane-2-dns" {
   value = module.k8s-data-plane-2.public-dns
 }
+
